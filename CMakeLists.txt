@@ -7,10 +7,10 @@ project(KafkaLearning VERSION 1.0)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# TODO 3: Add an executable called Tutorial to the project
+# Add an executable called Tutorial to the project
 # Hint: Be sure to specify the source file as tutorial.cxx
 # add_executable(Tutorial tutorial.cxx)
-# TODO 9: Use target_include_directories to include ${PROJECT_BINARY_DIR}
+# Use target_include_directories to include ${PROJECT_BINARY_DIR}
 # target_include_directories(Tutorial PUBLIC
 #                            "${PROJECT_BINARY_DIR}"
 #                            )
