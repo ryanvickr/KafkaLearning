@@ -1,10 +1,10 @@
 // Author: Ryan Vickramasinghe
 #include <string>
 
-#include "librdkafka/rdkafkacpp.h"
+#include "kafka/KafkaProducer.h"
+#include "absl/status/statusor.h"
 
-typedef rd_kafka_conf_s KafkaConfig;
+static absl::StatusOr<kafka::Properties> GetProperties();
 
-// Loads a Kafka configuration group.
-static void load_config_group(const std::string &key,
-                              const std::string &value, KafkaConfig *kafka_config);
+static absl::StatusOr<kafka::Topic> GetTopic();
+
