@@ -1,0 +1,8 @@
+[requires]
+abseil/20230802.1
+librdkafka/2.3.0
+modern-cpp-kafka/2023.03.07
+
+[generators]
+CMakeDeps
+CMakeToolchain

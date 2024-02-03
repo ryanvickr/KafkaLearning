@@ -3,10 +3,7 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/Users/ryanvickr/Documents/Libraries/abseil-cpp",
-                "/Users/ryanvickr/Documents/Libraries/modern-cpp-kafka/include",
-                "/opt/homebrew/Cellar/librdkafka/2.3.0/include"
+                "${workspaceFolder}/**"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -15,7 +12,8 @@
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "${default}"
+            "intelliSenseMode": "macos-clang-arm64",
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],
     "version": 4

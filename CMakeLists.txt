@@ -1,16 +1,14 @@
-# Set the minimum required version of CMake:
-cmake_minimum_required(VERSION 3.10)
-# Define project:
-project(KafkaLearning VERSION 1.0)
-# Set the variable CMAKE_CXX_STANDARD to 11
-# and the variable CMAKE_CXX_STANDARD_REQUIRED to True
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+cmake_minimum_required(VERSION 3.15)
+project(KafkaLearning)
 
-# Add an executable called Tutorial to the project
-# Hint: Be sure to specify the source file as tutorial.cxx
-# add_executable(Tutorial tutorial.cxx)
-# Use target_include_directories to include ${PROJECT_BINARY_DIR}
-# target_include_directories(Tutorial PUBLIC
-#                            "${PROJECT_BINARY_DIR}"
-#                            )
+# include_directories(".")
+
+find_package(absl REQUIRED)
+find_package(modern-cpp-kafka REQUIRED)
+find_package(RdKafka REQUIRED)
+
+add_library(common "")
+add_subdirectory("common")
+add_executable(${PROJECT_NAME} producer/producer_main.cc)
+
+target_link_libraries(${PROJECT_NAME} common abseil::abseil modern-cpp-kafka::modern-cpp-kafka RdKafka::rdkafka++)

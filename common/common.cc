@@ -2,25 +2,33 @@
 
 #include <string>
 
-#include "kafka/KafkaProducer.h"
+#include "absl/status/statusor.h"
+#include "kafka/Properties.h"
 
-static absl::StatusOr<kafka::Properties> GetProperties() {
-    const std::string broker_list = getenv("KAFKA_BROKER_LIST");
-    if (broker_list.empty()) {
+namespace kafka_learning {
+namespace util {
+
+absl::StatusOr<kafka::Properties> GetProperties() {
+    const auto broker_list = getenv("KAFKA_BROKER_LIST");
+    if (broker_list == NULL) {
         return absl::InvalidArgumentError(
             "No KAFKA_BROKER_LIST environment variable was specified.");
     }
 
-    const kafka::Properties properties({{"bootstrap.servers", broker_list}});
+    const kafka::Properties properties({{
+        "bootstrap.servers", std::string(broker_list)}});
     return properties;
 }
 
-static absl::StatusOr<kafka::Topic> GetTopic() {
-    const std::string topic = getenv("TOPIC");
-    if (topic.empty()) {
+absl::StatusOr<kafka::Topic> GetTopic() {
+    const auto topic = getenv("TOPIC");
+    if (topic == NULL) {
         return absl::InvalidArgumentError(
             "No TOPIC environment variable was specified.");
     }
 
     return kafka::Topic(topic);
 }
+
+}  // util
+}  // kafka_learning
